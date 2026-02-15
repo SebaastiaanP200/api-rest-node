@@ -2,6 +2,5 @@
 
 
 ```
-shell
 npm install
 ```
