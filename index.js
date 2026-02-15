@@ -2,10 +2,10 @@ import express from 'express';
 const app = express();
 const PORT = 3000;
 
-app.use((req, res, next) => {
-  // console.log(req.method);
-  // next();
-});
+// app.use((req, res, next) => {
+//   // console.log(req.method);
+//   // next();
+// });
 
 app.get('/', (req, res) => {
   res.json({ "message": "¡Bienvenidos a nuestra API REST!" });
