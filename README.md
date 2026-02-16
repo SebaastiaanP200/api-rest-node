@@ -11,7 +11,7 @@ API REST para gestión de productos desarrollada con Node.js y Express.
 1. Clonar el repositorio.
 2. Instalar dependencias:
 
-```powershell
+```
 npm install
 ```
 
@@ -27,7 +27,7 @@ Luego editar el archivo `.env` con los valores correspondientes para tu entorno.
 
 Ejecutar en modo desarrollo:
 
-```bash
+```
 npm run dev
 ```
 
@@ -42,7 +42,7 @@ npm run dev
 - **Descripción:** Devuelve la lista de todos los productos.
 - **Respuesta ejemplo:**
 
-```json
+```
 [
   { id: 1, name: 'Camiseta Deportiva', price: 150.99, categories: ["ropa", "deportes"] },
   { id: 2, name: 'Zapatillas Running', price: 1200.99, categories: ["calzado", "deportes"] },
