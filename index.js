@@ -10,14 +10,35 @@ const products = [
   { id: 5, name: 'Botella Térmica', price: 220.99, categories: ["hogar", "accesorios"] },
 ];
 
+// Bienvenida a la API
 app.get('/', (req, res) => {
   res.json({ "message": "¡Bienvenidos a nuestra API REST!" });
 });
 
+// Endpoint para obtener todos los productos o filtrar por categoría
 app.get('/products', (req, res) => {
-  res.json(products);
+  const {category} = req.query;
+  if (category) {
+    const productsFiltered = products.filter(item => item.categories.includes(category));
+    return res.json(productsFiltered);
+  } 
+  return res.json(products);
 });
 
+// Endpoint para buscar productos por nombre
+app.get('/products/search', (req, res) => {
+  const {name} = req.query;
+  if(!name) {
+    return res.status(400).json({error: "El nombre es requerido"});
+  }
+  const productsFiltered = products.filter((item) => item.name.toLowerCase().includes(name.toLowerCase()));
+  if(!productsFiltered.length) {
+    return res.status(404).json({error: "No se encontraron productos con ese nombre"});
+  }
+  res.json(productsFiltered);
+});
+
+// Endpoint para obtener un producto por su ID
 app.get('/products/:id', (req, res) => {
   const id = parseInt(req.params.id);
   const product = products.find((item) => item.id === id);
@@ -25,14 +46,14 @@ app.get('/products/:id', (req, res) => {
   if (!product) {
     res.status(404).json({ error: "Producto no encontrado" });
   }
-
   res.json(product);
 });
 
+// Middleware para manejar rutas no encontradas
 import notFoundMiddleware from './src/middlewares/not-found.js';
 app.use(notFoundMiddleware);
 
-
+// App listener
 app.listen(PORT, () => console.log(`Server is running on http://localhost:${PORT}`));
 
 
