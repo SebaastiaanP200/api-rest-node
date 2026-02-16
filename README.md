@@ -35,7 +35,7 @@ npm run dev
 
 
 
-## Obtener todos los productos
+### Obtener todos los productos
 
 
 - **GET** `/products`
@@ -52,3 +52,32 @@ npm run dev
 ];
 
 ```
+
+### Buscar productos por nombre
+
+- **GET** `/products/search?name=palabra`
+- **Descripción:** Devuelve todos los productos cuyo nombre contengan la palabra indicada.
+- **Párametros:**
+
+  - `name` (query, requerido): texto a buscar en el nombre del producto.
+- **Ejemplo de uso:** `products/search?name=camiseta`
+- **Respuesta de ejemplo:**
+
+  ```
+  [{ id: 1, name: 'Camiseta Deportiva', price: 150.99, categories: ["ropa", "deportes"] }];
+  ```
+
+
+### Obtener producto ID
+
+- **GET** `/products/:id`
+- **Descripción:** Devuelve un producto específico por su ID.
+- **Párametros:**
+
+  - `id` (path, requerido): ID del producto.
+- **Ejemplo de uso:** `products/1`
+- **Respuesta de ejemplo:**
+
+  ```
+  [{ id: 1, name: 'Camiseta Deportiva', price: 150.99, categories: ["ropa", "deportes"] }];
+  ```
