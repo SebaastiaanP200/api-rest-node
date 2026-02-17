@@ -37,7 +37,19 @@ export const getProductById = async (req, res) => {
 };
 
 // 
-export const createProduct = (req, res) => {
-  console.log(req.body);
-  res.send("OK");
+export const createProduct = async (req, res) => {
+  const { name, price, categories } = req.body;
+  const product = await Model.createProduct({ name, price, categories });
+  res.status(201).json(product);
+};
+
+export const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+
+  const deleted = await Model.deleteProduct(id);
+  
+  if(!deleted) {
+    return res.status(404).json({ error: "El producto no ha sido borrado"})
+  }
+  res.status(204).send();
 };
