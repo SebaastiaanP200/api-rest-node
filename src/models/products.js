@@ -3,7 +3,6 @@ import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 
 const productsCollection = collection(db, "products");
 
-
 export const getAllProducts = async () => {
   try{
     const productsSnapshot = await getDocs(productsCollection);

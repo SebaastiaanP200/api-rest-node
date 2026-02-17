@@ -36,3 +36,8 @@ export const getProductById = async (req, res) => {
   res.json(product);
 };
 
+// 
+export const createProduct = (req, res) => {
+  console.log(req.body);
+  res.send("OK");
+};
